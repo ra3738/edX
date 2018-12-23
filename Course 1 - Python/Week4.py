@@ -291,19 +291,8 @@ def LCS(S,T):
         return max([result1, result2], key=len)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
+    
 
 
 
@@ -311,20 +300,20 @@ def LCS(S,T):
 
 
 
-def maxRevenue(L):
-    maxList = [maxRelative(L, i) for i in range(len(L))]
-    maxValue = max(maxList)
-    return maxValue
+# def maxRevenue(L):
+#     maxList = [maxRelative(L, i) for i in range(len(L))]
+#     maxValue = max(maxList)
+#     return maxValue
 
-def maxRelative(L, i, counter = 0):
-    if counter == len(L):
-        return 0
+# def maxRelative(L, i, counter = 0):
+#     if counter == len(L):
+#         return 0
 
-    else:
-        if (L[counter]>=L[i]):
-            return L[i] + maxRelative(L, i, counter+1)
-        else:
-            return maxRelative(L, i, counter+1)
+#     else:
+#         if (L[counter]>=L[i]):
+#             return L[i] + maxRelative(L, i, counter+1)
+#         else:
+#             return maxRelative(L, i, counter+1)
 
 
     
