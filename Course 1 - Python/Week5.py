@@ -159,6 +159,68 @@ def baseToBase(B1,B2,s_in_B1):
 # Problem 8
 
 def add(S,T):
+    val1 = baseToBase(2, 10, S)
+    val2 = baseToBase(2, 10, T)
+    val3 = int(val1) + int(val2)
+    return baseToBase(10, 2, str(val3))
+
+
+# ---------------------
+# Problem 9
+
+def addB(S,T):
+    if S == '':
+        return T
+    elif T == '':
+        return S
+    elif (S[-1] == '0' and T[-1] == '0'):
+        return addB(S[0:-1], T[0:-1]) + '0'
+    elif (S[-1] == '1' and T[-1] == '0'):
+        return addB(S[0:-1], T[0:-1]) + '1'
+    elif (S[-1] == '0' and T[-1] == '1'):
+        return addB(S[0:-1], T[0:-1]) + '1'
+    elif (S[-1] == '1' and T[-1] == '1'):
+        return addB(addB(S[0:-1], T[0:-1]), '1') + '0'
+    
+
+# ---------------------
+# Problem 10
+
+def compress(n):
+    if n == '':
+        return ''
+
+    else:
+        counter = countConsecutive(n, n[0])
+        binaryEquiv = baseToBase(10,2,str(counter))  #gives binary string equiv of counter
+        valAsBits = convertToBits(binaryEquiv)
+
+        if (n[0] == '1'):
+            return '1' + valAsBits + compress(n[counter:])
+        else:
+            return '0' + valAsBits + compress(n[counter:])
+
+
+def countConsecutive(n, firstDigit):
+    if (n == ""):
+        return 0
+    
+    elif (n[0] != firstDigit):
+        return 0
+
+    else:
+        return 1 + countConsecutive(n[1:], firstDigit)
+    
+def convertToBits(n):
+    return '0'*(7-len(n)) + n
+
+def uncompress(n):
+    if n == '':
+        return ''
+
+    else:
+        numEquiv = baseToBase(2,10,n[1:8])
+        return n[0]*int(numEquiv) + uncompress(n[8:])
     
 
 
