@@ -352,3 +352,7 @@ def calculateSecInHour():
         for i in range(secondsInMinute):
             secondsInHour += 1
     return secondsInHour
+
+
+
+
